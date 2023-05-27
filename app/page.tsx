@@ -19,7 +19,10 @@ export default async function Home() {
       <h1>
         Current daily interest rate: <b>{interestRate}%</b>
       </h1>
-      <TestButton />
+      <TestButton
+        interestRate={interestRate}
+        owedMoney={owedMoney}
+      />
       <div>
         {transactions.map((transaction) => {
           return (

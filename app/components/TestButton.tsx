@@ -1,22 +1,31 @@
 "use client";
 
-async function triggerInterestEffect() {
-  await fetch("/api/trigger-interest-effect", {
-    method: "PUT",
-  });
+import { getInterestRate, getOwedMoney } from "../helpers/helpers";
 
-  await fetch("/api/make-transaction", {
-    method: "POST",
-    body: JSON.stringify({
-      type: "interest effect",
-      value: 0,
-      oldBalance: 0,
-      newBalance: 0,
-    }),
-  });
-  window.location.reload();
-}
+export default function TestButton({
+  owedMoney,
+  interestRate,
+}: {
+  owedMoney: number;
+  interestRate: number;
+}) {
+  async function triggerInterestEffect() {
+    await fetch("/api/make-transaction", {
+      method: "POST",
+      body: JSON.stringify({
+        type: "interest effect",
+        value: owedMoney + (owedMoney * interestRate) / 100 - owedMoney,
+        oldBalance: owedMoney,
+        newBalance: owedMoney + (owedMoney * interestRate) / 100,
+      }),
+    });
 
-export default function TestButton() {
+    await fetch("/api/trigger-interest-effect", {
+      method: "PUT",
+    });
+
+    window.location.reload();
+  }
+
   return <button onClick={() => triggerInterestEffect()}>Click me</button>;
 }

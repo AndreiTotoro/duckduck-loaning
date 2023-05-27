@@ -10,9 +10,9 @@ export async function POST(req: Request) {
   await prisma.transactions.create({
     data: {
       type: transactionData.type,
-      value: transactionData.value,
-      oldBalance: transactionData.oldBalance,
-      newBalance: transactionData.newBalance,
+      value: Math.floor(transactionData.value),
+      oldBalance: Math.floor(transactionData.oldBalance),
+      newBalance: Math.floor(transactionData.newBalance),
     },
   });
 }
