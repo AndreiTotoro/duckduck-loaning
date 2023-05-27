@@ -1,25 +1,24 @@
 import { PrismaClient } from "@prisma/client";
+import TestButton from "./components/TestButton";
+import { getInterestRate, getOwedMoney } from "./helpers/helpers";
 
 const prisma = new PrismaClient();
 
 export const revalidate = 0;
 
-async function getOwedMoney(): Promise<number> {
-  const owedMoney = await prisma.data.findFirst({
-    where: {
-      name: "owedMoney",
-    },
-  });
-
-  if (!owedMoney) {
-    return 0;
-  }
-
-  return owedMoney?.value;
-}
-
 export default async function Home() {
   const owedMoney = await getOwedMoney();
+  const interestRate = await getInterestRate();
 
-  return <div className="text-red-500">{owedMoney}</div>;
+  return (
+    <div className="text-red-500">
+      <h1>
+        Current owed sum: <b>{owedMoney} lei</b>
+      </h1>
+      <h1>
+        Current daily interest rate: <b>{interestRate}%</b>
+      </h1>
+      <TestButton />
+    </div>
+  );
 }
