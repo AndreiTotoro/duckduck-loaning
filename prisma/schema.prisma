@@ -14,9 +14,11 @@ model Data {
   value Float
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  email     String   @unique
-  name      String?
+model Transactions {
+  id        Int     @id @default(autoincrement())
+  date DateTime @default(now())
+  type String
+  value Float
+  oldBalance Float
+  newBalance Float
 }

@@ -27,7 +27,7 @@ async function getOwedMoney(): Promise<number> {
     return 0;
   }
 
-  return owedMoney.value;
+  return Math.floor(owedMoney.value);
 }
 
 export { getInterestRate, getOwedMoney };

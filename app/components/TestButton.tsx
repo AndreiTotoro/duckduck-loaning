@@ -3,9 +3,16 @@
 async function triggerInterestEffect() {
   await fetch("/api/trigger-interest-effect", {
     method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
+  });
+
+  await fetch("/api/make-transaction", {
+    method: "POST",
+    body: JSON.stringify({
+      type: "interest effect",
+      value: 0,
+      oldBalance: 0,
+      newBalance: 0,
+    }),
   });
   window.location.reload();
 }
