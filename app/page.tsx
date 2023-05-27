@@ -2,6 +2,8 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+export const revalidate = 0;
+
 async function getOwedMoney(): Promise<number> {
   const owedMoney = await prisma.data.findFirst({
     where: {
