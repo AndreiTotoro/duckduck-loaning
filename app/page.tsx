@@ -23,20 +23,28 @@ export default async function Home() {
         interestRate={interestRate}
         owedMoney={owedMoney}
       />
-      <div>
-        {transactions.map((transaction) => {
-          return (
-            <div
-              className="flex gap-2"
-              key={transaction.id}>
-              <h1>{transaction.type}</h1>
-              <h1>{transaction.value}</h1>
-              <h1>{transaction.oldBalance}</h1>
-              <h1>{transaction.newBalance}</h1>
-            </div>
-          );
-        })}
-      </div>
+      <table className="w-full table-auto">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Value</th>
+            <th>Old Balance</th>
+            <th>New Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          {transactions.map((transaction) => {
+            return (
+              <tr key={transaction.id}>
+                <td>{transaction.type}</td>
+                <td>{transaction.value}</td>
+                <td>{transaction.oldBalance}</td>
+                <td>{transaction.newBalance}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }
