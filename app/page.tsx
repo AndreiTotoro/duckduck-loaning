@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import TestButton from "./components/TestButton";
 import { getInterestRate, getOwedMoney } from "./helpers/helpers";
+import TestInput from "./components/TestInput";
 
 const prisma = new PrismaClient();
 
@@ -23,6 +24,7 @@ export default async function Home() {
         interestRate={interestRate}
         owedMoney={owedMoney}
       />
+      <TestInput />
       <table className="w-full table-auto">
         <thead>
           <tr>
