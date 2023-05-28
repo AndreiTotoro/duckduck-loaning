@@ -24,7 +24,7 @@ export default async function Home() {
         interestRate={interestRate}
         owedMoney={owedMoney}
       />
-      <TestInput />
+      <TestInput owedMoney={owedMoney} />
       <table className="w-full table-auto">
         <thead>
           <tr>
