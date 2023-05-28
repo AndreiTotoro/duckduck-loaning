@@ -8,7 +8,7 @@ export default function TestInput({ owedMoney }: { owedMoney: number }) {
     await fetch("api/make-transaction", {
       method: "POST",
       body: JSON.stringify({
-        type: "Blance Change",
+        type: "Balance Change",
         value: Number(value),
         oldBalance: owedMoney,
         newBalance: owedMoney + Number(value),

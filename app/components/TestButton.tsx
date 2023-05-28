@@ -13,7 +13,7 @@ export default function TestButton({
     await fetch("/api/make-transaction", {
       method: "POST",
       body: JSON.stringify({
-        type: "interest effect",
+        type: "Interest Effect",
         value: owedMoney + (owedMoney * interestRate) / 100 - owedMoney,
         oldBalance: owedMoney,
         newBalance: owedMoney + (owedMoney * interestRate) / 100,
