@@ -2,8 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import TestButton from "./components/TestButton";
 import { getInterestRate, getOwedMoney } from "./helpers/helpers";
 import TestInput from "./components/TestInput";
-
-const prisma = new PrismaClient();
+import { prisma } from "./lib/prismaclient";
 
 export const revalidate = 0;
 

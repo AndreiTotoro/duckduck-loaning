@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
+import { prisma } from "../lib/prismaclient";
 
 async function getInterestRate(): Promise<number> {
-  const prisma = new PrismaClient();
   const interestRate = await prisma.data.findFirst({
     where: {
       name: "interestRate",
@@ -16,7 +16,6 @@ async function getInterestRate(): Promise<number> {
 }
 
 async function getOwedMoney(): Promise<number> {
-  const prisma = new PrismaClient();
   const owedMoney = await prisma.data.findFirst({
     where: {
       name: "owedMoney",
